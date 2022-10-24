@@ -1,11 +1,19 @@
 <script setup lang="ts">
+<<<<<<< HEAD
+=======
+import { http } from "@/services/http";
+>>>>>>> P1_list articles and configaxios request
 import { onMounted, reactive } from "vue";
 import ArticleItem from "../components/article/ArticleItem.vue"
 import type {IArticle} from "../types/Article.type"
 import ArticleDataService from "../services/ArticleDataService"
 
 const articlesState : {articles: IArticle[]} = reactive({
+<<<<<<< HEAD
   articles: []
+=======
+  articles: [] as IArticle[]
+>>>>>>> P1_list articles and configaxios request
 });
 
 const getArticles = async () => {
