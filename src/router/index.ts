@@ -1,6 +1,4 @@
-import ArticlesView from "../views/ArticlesView.vue";
 import { createRouter, createWebHistory } from "vue-router";
-import ArticleDetailsView from "@/views/ArticleDetailsView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -8,13 +6,13 @@ const router = createRouter({
     {
       path: "/",
       name: "home",
-      component: ArticlesView
+      component: () => import("@/views/ArticlesView.vue"),
     },
     {
-      path: "/articles/:id",
+      path: "/articles/:slug",
       name: "article_details",
-      component: ArticleDetailsView
-    }
+      component: () => import("@/views/ArticleDetailsView.vue"),
+    },
   ],
 });
 

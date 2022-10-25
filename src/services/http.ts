@@ -6,10 +6,10 @@ import axios, {
 } from "axios";
 
 enum StatusCode {
-  NotFound = 400,
+  BadRequest = 400,
   Unauthorized = 401,
   Forbidden = 403,
-  BadRequest = 404,
+  NotFound = 404,
   TooManyRequests = 429,
   InternalServerError = 500,
 }
@@ -22,23 +22,16 @@ const headers: Readonly<Record<string, string | boolean>> = {
 };
 
 class Http {
-<<<<<<< HEAD
   private instance: AxiosInstance = this.initHttp();
 
   private get http(): AxiosInstance {
     return this.instance;
-=======
-  private instance: AxiosInstance | null = null;
-
-  private get http(): AxiosInstance {
-    return this.instance != null ? this.instance : this.initHttp();
->>>>>>> P1_list articles and configaxios request
   }
 
   initHttp() {
     const http = axios.create({
       baseURL: "http://localhost:3000",
-      headers
+      headers,
     });
 
     http.interceptors.response.use(
@@ -49,10 +42,6 @@ class Http {
       }
     );
 
-<<<<<<< HEAD
-=======
-    this.instance = http;
->>>>>>> P1_list articles and configaxios request
     return http;
   }
 
@@ -100,14 +89,8 @@ class Http {
     return this.http.delete<T, R>(url, config);
   }
 
-<<<<<<< HEAD
-=======
-  // Handle global app errors
-  // We can handle generic app errors depending on the status code
->>>>>>> P1_list articles and configaxios request
   private handleError(error: AxiosError) {
     const { status } = error;
-
     switch (status) {
       case StatusCode.NotFound: {
         // Handle NotFound
