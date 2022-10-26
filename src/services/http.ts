@@ -6,10 +6,10 @@ import axios, {
 } from "axios";
 
 enum StatusCode {
-  NotFound = 400,
+  BadRequest = 400,
   Unauthorized = 401,
   Forbidden = 403,
-  BadRequest = 404,
+  NotFound = 404,
   TooManyRequests = 429,
   InternalServerError = 500,
 }
@@ -31,7 +31,7 @@ class Http {
   initHttp() {
     const http = axios.create({
       baseURL: "http://localhost:3000",
-      headers
+      headers,
     });
 
     http.interceptors.response.use(
@@ -91,7 +91,6 @@ class Http {
 
   private handleError(error: AxiosError) {
     const { status } = error;
-
     switch (status) {
       case StatusCode.NotFound: {
         // Handle NotFound
