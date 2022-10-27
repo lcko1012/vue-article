@@ -22,7 +22,7 @@ const props = defineProps<IProps>();
         <button
           class="rounded-md bg-green-300 p-1 my-2 hover:bg-green-600 hover:text-white"
         >
-          Read
+          {{ $t("components.article.articleItem.read") }}
         </button>
       </RouterLink>
     </div>

@@ -21,7 +21,7 @@ onMounted(() => {
   <div class="px-12 py-12">
     <RouterLink to="/articles/create">
       <button class="p-2 mb-2 rounded-md bg-green-700 text-white">
-        Create
+        {{ $t("views.articles.create") }}
       </button>
     </RouterLink>
 
