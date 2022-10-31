@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { Form, Field } from "vee-validate";
 import ArticleDataService from "@/services/ArticleDataService";
-import { ref } from "vue";
+import { ref, watch } from "vue";
+import { useI18n } from "vue-i18n";
 
 export interface ICreateArticle {
   title: string;
@@ -9,13 +10,21 @@ export interface ICreateArticle {
   thumbnail: string;
   isPublic?: boolean;
 }
-
+const { locale } = useI18n();
+const form = ref<typeof Form>();
 const isSuccess = ref<boolean>(false);
 const schema = {
   title: "required|minMaxLength:5,255",
   content: "required",
   thumbnail: "required|url",
 };
+
+watch(
+  () => locale.value,
+  () => {
+    form.value?.validate();
+  }
+);
 
 const handleSubmit = async (values: Record<string, unknown>) => {
   const temp = values as ICreateArticle & Record<string, unknown>;
@@ -34,14 +43,17 @@ const handleSubmit = async (values: Record<string, unknown>) => {
   <div class="w-screen h-screen flex justify-center">
     <div>
       <Form
+        ref="form"
         @submit="handleSubmit"
         :validation-schema="schema"
         v-slot="{ errors }"
         class="w-[800px] grid grid-rows-1 gap-1 rounded-lg"
       >
-        <h1 class="text-center text-3xl my-5">New Article</h1>
+        <h1 class="text-center text-3xl my-5">
+          {{ $t("views.createArticle.new") }}
+        </h1>
 
-        <label>Title:</label>
+        <label>{{ $t("views.createArticle.title") }}:</label>
         <Field
           type="text"
           name="title"
@@ -49,7 +61,7 @@ const handleSubmit = async (values: Record<string, unknown>) => {
         />
         <span class="text-red-400">{{ errors.title }}</span>
 
-        <label>Content:</label>
+        <label>{{ $t("views.createArticle.content") }}:</label>
         <Field
           as="textarea"
           name="content"
@@ -58,7 +70,7 @@ const handleSubmit = async (values: Record<string, unknown>) => {
         />
         <span class="text-red-400">{{ errors.content }}</span>
 
-        <label>Thumbnail URL:</label>
+        <label>{{ $t("views.createArticle.thumbnail") }}</label>
         <Field
           type="text"
           name="thumbnail"
@@ -74,16 +86,18 @@ const handleSubmit = async (values: Record<string, unknown>) => {
             :value="true"
             :unchecked-value="false"
           />
-          <label for="isPublic" class="ml-1 cursor-pointer">Public</label>
+          <label for="isPublic" class="ml-1 cursor-pointer">
+            {{ $t("views.createArticle.public") }}
+          </label>
         </div>
 
         <button type="submit" class="p-2 bg-green-600 text-white rounded-lg">
-          Submit
+          {{ $t("views.createArticle.submit") }}
         </button>
       </Form>
 
       <span v-if="isSuccess" class="text-blue-400">
-        Successfully created!
+        {{ $t("views.createArticle.success") }}
       </span>
     </div>
   </div>
