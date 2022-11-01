@@ -12,6 +12,9 @@ class ArticleDataService {
   async create(article: ICreateArticle) {
     return await http.post("/articles", article);
   }
+  async delete(id: number) {
+    return await http.delete(`/articles/${id}`);
+  }
 }
 
 export default new ArticleDataService();

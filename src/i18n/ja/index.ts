@@ -16,11 +16,22 @@ export default {
       submit: "送信",
       success: "成功に作成されました！",
     },
+    articleDetails: {
+      delete_header: "ノート",
+      delete_text: "この投稿を削除しますか?",
+      delete_success: "成功に削除されました!",
+    },
   },
   components: {
     article: {
       articleItem: {
         read: "読む",
+      },
+    },
+    core: {
+      deleteConfirmModal: {
+        delete: "消す",
+        cancel: "カンセル",
       },
     },
   },

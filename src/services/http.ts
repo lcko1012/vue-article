@@ -1,9 +1,11 @@
+import type { IErrorResponse } from "@/types/Error.type";
 import axios, {
   type AxiosError,
   type AxiosInstance,
   type AxiosRequestConfig,
   type AxiosResponse,
 } from "axios";
+import toast from "@/common/toast";
 
 enum StatusCode {
   BadRequest = 400,
@@ -89,11 +91,12 @@ class Http {
     return this.http.delete<T, R>(url, config);
   }
 
-  private handleError(error: AxiosError) {
+  private handleError(error: AxiosError & IErrorResponse) {
     const { status } = error;
     switch (status) {
       case StatusCode.NotFound: {
         // Handle NotFound
+        toast.error(error.data.message[0]);
         break;
       }
       case StatusCode.InternalServerError: {
