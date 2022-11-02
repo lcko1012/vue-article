@@ -4,10 +4,14 @@ import router from "./router";
 import { i18n } from "./i18n";
 import "./style.css";
 import "./common/validator";
+import FontAwesomeIcon from "./common/fontawesome-icons";
+import Toast from "vue-toastification";
+import "vue-toastification/dist/index.css";
+import options from "./common/toast-options";
 
-const app = createApp(App);
-
-app.use(router);
-app.use(i18n);
-
-app.mount("#app");
+createApp(App)
+  .component("FontAwesomeIcon", FontAwesomeIcon)
+  .use(router)
+  .use(i18n)
+  .use(Toast, options)
+  .mount("#app");
