@@ -2,6 +2,8 @@ export default {
   menu: {
     home: "ホーム",
     language: "言語",
+    login: "ログイン",
+    greeting: "こんにちは {name}",
   },
   views: {
     articles: {
@@ -21,6 +23,13 @@ export default {
       delete_text: "この投稿を削除しますか?",
       delete_success: "成功に削除されました!",
     },
+    login: {
+      title: "ログイン",
+      email: "Eメール",
+      password: "パスワード",
+      submit: "ログイン",
+      failed: "無効なメールアドレスまたはパスワード",
+    },
   },
   components: {
     article: {
@@ -33,6 +42,9 @@ export default {
         delete: "消す",
         cancel: "カンセル",
       },
+    },
+    errors: {
+      somethingWrong: "何かが間違っていました。もう一度やり直してください",
     },
   },
 };

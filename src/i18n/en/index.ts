@@ -2,6 +2,8 @@ export default {
   menu: {
     home: "Home",
     language: "Language",
+    login: "Login",
+    greeting: "Hi {name}",
   },
   views: {
     articles: {
@@ -21,6 +23,13 @@ export default {
       delete_text: "Do you want to delete this article?",
       delete_success: "Successfully deleted!",
     },
+    login: {
+      title: "Login",
+      email: "Email",
+      password: "Password",
+      submit: "Login",
+      failed: "Invalid email or password",
+    },
   },
   components: {
     article: {
@@ -34,5 +43,8 @@ export default {
         cancel: "Cancel",
       },
     },
+  },
+  errors: {
+    somethingWrong: "Something went wrong, please try again",
   },
 };
