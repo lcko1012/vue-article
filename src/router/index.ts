@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import { Authenticated, IsAuthRoutes } from "./authentication-config";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,6 +18,13 @@ const router = createRouter({
       path: "/articles/create",
       name: "article_create",
       component: () => import("@/views/CreateArticleView.vue"),
+      beforeEnter: Authenticated,
+    },
+    {
+      path: "/login",
+      name: "login",
+      component: () => import("@/views/LoginView.vue"),
+      beforeEnter: IsAuthRoutes,
     },
   ],
 });

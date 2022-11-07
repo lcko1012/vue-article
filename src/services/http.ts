@@ -6,6 +6,9 @@ import axios, {
   type AxiosResponse,
 } from "axios";
 import toast from "@/common/toast";
+import router from "@/router";
+import CookieService from "./CookieService";
+import { i18n } from "@/i18n";
 
 enum StatusCode {
   BadRequest = 400,
@@ -18,9 +21,7 @@ enum StatusCode {
 
 const headers: Readonly<Record<string, string | boolean>> = {
   Accept: "application/json",
-  "Content-Type": "application/json; charset=utf-8",
-  "Access-Control-Allow-Credentials": true,
-  "X-Requested-With": "XMLHttpRequest",
+  Authorization: `Bearer ${CookieService.getAccessToken()}`,
 };
 
 class Http {
@@ -34,6 +35,7 @@ class Http {
     const http = axios.create({
       baseURL: "http://localhost:3000",
       headers,
+      withCredentials: true,
     });
 
     http.interceptors.response.use(
@@ -101,6 +103,7 @@ class Http {
       }
       case StatusCode.InternalServerError: {
         // Handle InternalServerError
+        toast.error(i18n.global.t("errors.somethingWrong"));
         break;
       }
       case StatusCode.Forbidden: {
@@ -113,6 +116,10 @@ class Http {
       }
       case StatusCode.Unauthorized: {
         // Handle Unauthorized
+        const isLoginRoute = error.config?.url?.includes("/auth/login");
+        if (!isLoginRoute) {
+          router.push("/");
+        }
         break;
       }
       case StatusCode.TooManyRequests: {

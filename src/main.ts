@@ -8,10 +8,22 @@ import FontAwesomeIcon from "./common/fontawesome-icons";
 import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
 import options from "./common/toast-options";
+import { store } from "./store";
+import CookieService from "./services/CookieService";
+import { AuthenticationActionTypes } from "./store/authentication/actions";
+import { NamespaceTypes } from "./store/contanst";
 
-createApp(App)
-  .component("FontAwesomeIcon", FontAwesomeIcon)
-  .use(router)
-  .use(i18n)
-  .use(Toast, options)
-  .mount("#app");
+store
+  .dispatch(`${NamespaceTypes.AUTH}/${AuthenticationActionTypes.INIT}`)
+  .catch(() => {
+    CookieService.removeAccessToken();
+  })
+  .finally(() => {
+    createApp(App)
+      .component("FontAwesomeIcon", FontAwesomeIcon)
+      .use(store)
+      .use(router)
+      .use(i18n)
+      .use(Toast, options)
+      .mount("#app");
+  });
