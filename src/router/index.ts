@@ -1,24 +1,46 @@
 import { createRouter, createWebHistory } from "vue-router";
-import { Authenticated, IsAuthRoutes } from "./authentication-config";
+import {
+  Authenticated,
+  Authorizated,
+  IsAuthRoutes,
+} from "./authentication-config";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: "/",
-      name: "home",
-      component: () => import("@/views/ArticlesView.vue"),
+      component: () => import("@/views/LayoutView.vue"),
+      children: [
+        {
+          path: "/",
+          name: "articles",
+          component: () => import("@/views/ArticlesView.vue"),
+        },
+        {
+          path: "/articles/create",
+          name: "article_create",
+          component: () => import("@/views/CreateArticleView.vue"),
+          beforeEnter: Authenticated,
+        },
+        {
+          path: "/articles/:slug",
+          name: "article_details",
+          component: () => import("@/views/ArticleDetailsView.vue"),
+        },
+      ],
     },
     {
-      path: "/articles/:slug",
-      name: "article_details",
-      component: () => import("@/views/ArticleDetailsView.vue"),
-    },
-    {
-      path: "/articles/create",
-      name: "article_create",
-      component: () => import("@/views/CreateArticleView.vue"),
-      beforeEnter: Authenticated,
+      path: "/admin",
+      component: () => import("@/views/admin/LayoutView.vue"),
+      beforeEnter: Authorizated,
+      children: [
+        {
+          path: "dashboard",
+          name: "admin_dashboard",
+          component: () => import("@/views/admin/DashboardView.vue"),
+        },
+      ],
     },
     {
       path: "/login",

@@ -23,9 +23,10 @@ const articleState: { article: IArticle } = reactive({
 const showDeleteModal = ref(false);
 
 watchEffect(async () => {
-  articleState.article = await ArticleDataService.getDetails(
-    String(route.params.slug)
-  );
+  if (route.params.slug)
+    articleState.article = await ArticleDataService.getDetails(
+      String(route.params.slug)
+    );
 });
 
 const handleDelete = async () => {

@@ -1,7 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import {
+  faTrash,
+  faLock,
+  faGripHorizontal,
+  faHouseUser,
+} from "@fortawesome/free-solid-svg-icons";
 
-library.add(faTrash);
+library.add(faTrash, faLock, faGripHorizontal, faHouseUser);
 
 export default FontAwesomeIcon;

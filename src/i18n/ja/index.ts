@@ -1,9 +1,13 @@
+import AdminTranslation from "./admin";
+
 export default {
+  ...AdminTranslation,
   menu: {
     home: "ホーム",
     language: "言語",
     login: "ログイン",
     greeting: "こんにちは {name}",
+    admin: "アドミン",
   },
   views: {
     articles: {
@@ -45,6 +49,7 @@ export default {
     },
     errors: {
       somethingWrong: "何かが間違っていました。もう一度やり直してください",
+      authorization: "アクセス拒否",
     },
   },
 };
