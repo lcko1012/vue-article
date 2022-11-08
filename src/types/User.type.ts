@@ -2,12 +2,12 @@ export interface IUser {
   id: number;
   name: string;
   email: string;
-  role: UserRole;
+  role: UserRoleTypes;
   avatarUrl: string;
   about: string | null;
 }
 
-enum UserRole {
+export enum UserRoleTypes {
   ADMIN = "admin",
   USER = "user",
 }

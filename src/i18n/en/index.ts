@@ -1,9 +1,13 @@
+import AdminTranslation from "./admin";
+
 export default {
+  ...AdminTranslation,
   menu: {
     home: "Home",
     language: "Language",
     login: "Login",
     greeting: "Hi {name}",
+    admin: "Admin",
   },
   views: {
     articles: {
@@ -46,5 +50,6 @@ export default {
   },
   errors: {
     somethingWrong: "Something went wrong, please try again",
+    authorization: "Access denied",
   },
 };

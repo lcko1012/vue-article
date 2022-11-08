@@ -2,6 +2,8 @@ import { store } from "@/store";
 import { AuthenticationGetterTypes } from "@/store/authentication/getters";
 import { NamespaceTypes } from "@/store/contanst";
 import type { NavigationGuardNext, RouteLocationNormalized } from "vue-router";
+import toast from "@/common/toast";
+import { i18n } from "@/i18n";
 
 export const Authenticated = (
   _to: RouteLocationNormalized,
@@ -33,4 +35,21 @@ export const IsAuthRoutes = (
     return next("/");
   }
   next();
+};
+
+export const Authorizated = (
+  _to: RouteLocationNormalized,
+  from: RouteLocationNormalized,
+  next: NavigationGuardNext
+) => {
+  const isAdmin =
+    store.getters[
+      `${NamespaceTypes.AUTH}/${AuthenticationGetterTypes.GET_IS_ADMIN}`
+    ];
+
+  if (isAdmin) {
+    return next();
+  }
+  toast.warning(i18n.global.t("errors.authorization"));
+  next("/");
 };
