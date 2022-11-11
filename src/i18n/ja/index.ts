@@ -8,6 +8,7 @@ export default {
     login: "ログイン",
     greeting: "こんにちは {name}",
     admin: "アドミン",
+    update: "更新情報",
   },
   views: {
     articles: {
@@ -33,6 +34,21 @@ export default {
       password: "パスワード",
       submit: "ログイン",
       failed: "無効なメールアドレスまたはパスワード",
+    },
+    updateWrapper: {
+      title: "プロフィールを更新",
+      information: "インフォメーション",
+      password: "パスワード",
+      updateInformation: {
+        avatar: "アバター",
+        upload: "アップロード",
+        username: "ユーザーネーム",
+        email: "Eメール",
+        name: "ネーム",
+        about: "について",
+        save: "保存",
+        success: "更新しました！",
+      },
     },
   },
   components: {

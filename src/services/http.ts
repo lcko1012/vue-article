@@ -21,7 +21,6 @@ enum StatusCode {
 
 const headers: Readonly<Record<string, string | boolean>> = {
   Accept: "application/json",
-  Authorization: `Bearer ${CookieService.getAccessToken()}`,
 };
 
 class Http {
@@ -37,6 +36,18 @@ class Http {
       headers,
       withCredentials: true,
     });
+
+    http.interceptors.request.use(
+      (config) => {
+        const token = CookieService.getAccessToken();
+        config.headers = config.headers ?? {};
+        if (token != null) {
+          config.headers.Authorization = `Bearer ${token}`;
+        }
+        return config;
+      },
+      (error) => Promise.reject(error)
+    );
 
     http.interceptors.response.use(
       (response) => response.data,

@@ -1,5 +1,13 @@
 import { defineRule } from "vee-validate";
-import { required, min, max, url, email } from "@vee-validate/rules";
+import {
+  required,
+  min,
+  max,
+  url,
+  email,
+  image,
+  size,
+} from "@vee-validate/rules";
 
 defineRule("required", required);
 defineRule(
@@ -12,3 +20,5 @@ defineRule(
 );
 defineRule("url", url);
 defineRule("email", email);
+defineRule("image", image);
+defineRule("size", size);

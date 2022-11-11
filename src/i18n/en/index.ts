@@ -8,6 +8,7 @@ export default {
     login: "Login",
     greeting: "Hi {name}",
     admin: "Admin",
+    update: "Update",
   },
   views: {
     articles: {
@@ -33,6 +34,21 @@ export default {
       password: "Password",
       submit: "Login",
       failed: "Invalid email or password",
+    },
+    updateWrapper: {
+      title: "Update Profile",
+      information: "Information",
+      password: "Password",
+      updateInformation: {
+        avatar: "Avatar",
+        upload: "Upload",
+        username: "Username",
+        email: "Email",
+        name: "Name",
+        about: "About",
+        save: "Save",
+        success: "Successfully updated!",
+      },
     },
   },
   components: {
