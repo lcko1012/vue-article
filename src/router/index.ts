@@ -18,15 +18,27 @@ const router = createRouter({
           component: () => import("@/views/ArticlesView.vue"),
         },
         {
-          path: "/articles/create",
+          path: "articles/create",
           name: "article_create",
           component: () => import("@/views/CreateArticleView.vue"),
           beforeEnter: Authenticated,
         },
         {
-          path: "/articles/:slug",
+          path: "articles/:slug",
           name: "article_details",
           component: () => import("@/views/ArticleDetailsView.vue"),
+        },
+        {
+          path: "update_profile",
+          component: () => import("@/views/user/profile/UpdateWrapperView.vue"),
+          children: [
+            {
+              path: "information",
+              name: "update_information",
+              component: () =>
+                import("@/views/user/profile/UpdateInformationView.vue"),
+            },
+          ],
         },
       ],
     },

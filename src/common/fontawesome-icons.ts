@@ -5,8 +5,21 @@ import {
   faLock,
   faGripHorizontal,
   faHouseUser,
+  faCaretDown,
+  faPenToSquare,
+  faUpload,
+  faSun,
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faTrash, faLock, faGripHorizontal, faHouseUser);
+library.add(
+  faTrash,
+  faLock,
+  faGripHorizontal,
+  faHouseUser,
+  faCaretDown,
+  faPenToSquare,
+  faUpload,
+  faSun
+);
 
 export default FontAwesomeIcon;

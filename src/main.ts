@@ -12,6 +12,7 @@ import { store } from "./store";
 import CookieService from "./services/CookieService";
 import { AuthenticationActionTypes } from "./store/authentication/actions";
 import { NamespaceTypes } from "./store/contanst";
+import { clickOutside } from "./common/click-outside-directive";
 
 store
   .dispatch(`${NamespaceTypes.AUTH}/${AuthenticationActionTypes.INIT}`)
@@ -25,5 +26,6 @@ store
       .use(router)
       .use(i18n)
       .use(Toast, options)
+      .directive("clickOut", clickOutside)
       .mount("#app");
   });
