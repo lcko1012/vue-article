@@ -1,5 +1,5 @@
 <template>
-  <div class="px-12 py-12 bg-slate-50 min-h-body">
+  <div class="px-12 py-12 bg-slate-50 min-h-[calc(100vh-var(--header-height))]">
     <h1 class="mb-5 text-xl text-gray-900">
       {{ $t("views.updateWrapper.title") }}
     </h1>

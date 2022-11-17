@@ -6,7 +6,6 @@ export default {
     home: "ホーム",
     language: "言語",
     login: "ログイン",
-    greeting: "こんにちは {name}",
     admin: "アドミン",
     update: "更新情報",
   },
@@ -27,6 +26,10 @@ export default {
       delete_header: "ノート",
       delete_text: "この投稿を削除しますか?",
       delete_success: "成功に削除されました!",
+      follow: "フォロー",
+      about: "について",
+      joined: "参加した",
+      posted_on: "{date} に投稿した",
     },
     login: {
       title: "ログイン",

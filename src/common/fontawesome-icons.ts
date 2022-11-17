@@ -9,6 +9,10 @@ import {
   faPenToSquare,
   faUpload,
   faSun,
+  faPen,
+  faHeart,
+  faBookmark,
+  faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -19,7 +23,11 @@ library.add(
   faCaretDown,
   faPenToSquare,
   faUpload,
-  faSun
+  faSun,
+  faPen,
+  faHeart,
+  faBookmark,
+  faUserPlus
 );
 
 export default FontAwesomeIcon;
