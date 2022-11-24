@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import ArticleDataService from "@/services/ArticleDataService";
-import type { IArticle } from "@/types/Article.type";
-import { reactive, watchEffect, ref } from "vue";
+import { reactive, watchEffect, ref, computed } from "vue";
 import { useRoute } from "vue-router";
-import DeleteConfirmModal from "@/components/core/DeleteConfirmModal.vue";
-import router from "@/router";
-import toast from "@/common/toast";
 import { useI18n } from "vue-i18n";
-import { computed } from "vue";
 import { useStore } from "vuex";
+import { useLoading } from "vue-loading-overlay";
+
+import type { IArticle } from "@/types/Article.type";
+import { ArticleReactionTypes } from "@/types/Reaction.type";
+import router from "@/router";
+import ArticleDataService from "@/services/ArticleDataService";
 import { NamespaceTypes } from "@/store/contanst";
 import { AuthenticationGetterTypes } from "@/store/authentication/getters";
 import { convertToLocaleDateString } from "@/common/date-time";
-import { ArticleReactionTypes } from "@/types/Reaction.type";
-import { useLoading } from "vue-loading-overlay";
+import toast from "@/common/toast";
+import DeleteConfirmModal from "@/components/core/DeleteConfirmModal.vue";
 
 const store = useStore();
 const route = useRoute();
@@ -95,7 +95,7 @@ const isAuthor = computed(() => {
 </script>
 
 <template>
-  <div class="px-12 py-12 bg-gray-100 min-h-[calc(100vh-var(--header-height))]">
+  <div class="px-12 py-10 bg-gray-100 min-h-body">
     <div class="grid grid-cols-12 gap-4">
       <div class="col-span-1 flex justify-end">
         <div class="relative h-full">
@@ -193,9 +193,10 @@ const isAuthor = computed(() => {
         </div>
 
         <div class="px-16 py-6">
-          <p class="indent-8 tracking-wider">
-            {{ articleState.article.content }}
-          </p>
+          <div
+            class="tracking-wider ck-content"
+            v-dompurify-html="articleState.article.content"
+          />
         </div>
       </div>
 

@@ -14,10 +14,10 @@ export default {
       create: "Create",
     },
     createArticle: {
-      new: "New Article",
       title: "Title",
+      title_here: "title here...",
       content: "Content",
-      thumbnail: "Thumnail URL",
+      thumbnail: "Add a thumbnail",
       public: "Public",
       submit: "Submit",
       success: "Successfully created!",
@@ -70,5 +70,6 @@ export default {
   errors: {
     somethingWrong: "Something went wrong, please try again",
     authorization: "Access denied",
+    cant_upload_file: "Couldn't upload file {name}",
   },
 };

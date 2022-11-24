@@ -1,10 +1,11 @@
 <script setup lang="ts">
+import { computed, ref } from "vue";
 import { RouterView } from "vue-router";
 import { useI18n } from "vue-i18n";
-import { SUPPORT_LOCALES } from "@/i18n";
 import { setLocale } from "@vee-validate/i18n";
 import { useStore } from "vuex";
-import { computed, ref } from "vue";
+
+import { SUPPORT_LOCALES } from "@/i18n";
 import { NamespaceTypes } from "@/store/contanst";
 import { AuthenticationGetterTypes } from "@/store/authentication/getters";
 
@@ -55,7 +56,7 @@ const isAdmin = computed(() => {
     <div class="ml-2 flex items-center justify-between w-full">
       <RouterLink
         to="/"
-        class="delay-75 cursor-pointer rounded-md !bg-white hover:!bg-green-200"
+        class="delay-75 cursor-pointer rounded-md !bg-blue-600 p-1 text-white font-bold"
       >
         {{ t("menu.home") }}
       </RouterLink>
@@ -69,7 +70,17 @@ const isAdmin = computed(() => {
           {{ t("menu.login") }}
         </RouterLink>
 
-        <div v-else>
+        <div v-else class="flex items-center">
+          <RouterLink
+            to="/articles/create"
+            class="!bg-blue-200 text-blue-700 rounded-lg p-2 border hover:!bg-blue-300"
+          >
+            <button>
+              <FontAwesomeIcon icon="pen" class="mr-1" />
+              {{ $t("views.articles.create") }}
+            </button>
+          </RouterLink>
+
           <div
             class="mr-2 px-2 rounded-md cursor-pointer relative"
             v-click-out="handleCloseDropdown"

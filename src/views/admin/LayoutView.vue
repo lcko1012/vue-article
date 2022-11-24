@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { AuthenticationGetterTypes } from "@/store/authentication/getters";
-import { NamespaceTypes } from "@/store/contanst";
 import { computed } from "vue";
 import { useStore } from "vuex";
+
+import { AuthenticationGetterTypes } from "@/store/authentication/getters";
+import { NamespaceTypes } from "@/store/contanst";
 
 const store = useStore();
 

@@ -10,6 +10,8 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^35.3.2",
+    "@ckeditor/ckeditor5-vue": "^4.0.1",
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "@fortawesome/vue-fontawesome": "^3.0.1",
@@ -19,6 +21,7 @@
     "universal-cookie": "^4.0.4",
     "vee-validate": "^4.7.1",
     "vue": "^3.2.41",
+    "vue-dompurify-html": "^3.1.1",
     "vue-i18n": "^9.2.2",
     "vue-loading-overlay": "^6.0.2",
     "vue-router": "^4.1.5",
@@ -27,6 +30,7 @@
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.4",
+    "@types/ckeditor__ckeditor5-build-classic": "^29.0.1",
     "@types/node": "^16.11.68",
     "@vitejs/plugin-vue": "^3.1.2",
     "@vitejs/plugin-vue-jsx": "^2.0.1",
