@@ -137,4 +137,3 @@ const isAdmin = computed(() => {
     <RouterView />
   </main>
 </template>
-<!-- group-hover:absolute group-hover:block -->

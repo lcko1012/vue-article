@@ -6,7 +6,6 @@ export default {
     home: "Home",
     language: "Language",
     login: "Login",
-    greeting: "Hi {name}",
     admin: "Admin",
     update: "Update",
   },
@@ -27,6 +26,10 @@ export default {
       delete_header: "Note",
       delete_text: "Do you want to delete this article?",
       delete_success: "Successfully deleted!",
+      follow: "Follow",
+      about: "About",
+      joined: "Joined",
+      posted_on: "Posted on {date}",
     },
     login: {
       title: "Login",

@@ -26,7 +26,8 @@ const router = createRouter({
         {
           path: "articles/:slug",
           name: "article_details",
-          component: () => import("@/views/ArticleDetailsView.vue"),
+          component: () =>
+            import("@/views/user/article/ArticleDetailsView.vue"),
         },
         {
           path: "update_profile",

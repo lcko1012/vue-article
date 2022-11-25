@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --header-height: 70px;
+}
+
 .router-link-exact-active {
   @apply bg-slate-200;
+}
+
+.circle-avatar {
+  @apply rounded-full;
+  @apply object-cover;
 }

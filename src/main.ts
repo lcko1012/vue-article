@@ -13,6 +13,8 @@ import CookieService from "./services/CookieService";
 import { AuthenticationActionTypes } from "./store/authentication/actions";
 import { NamespaceTypes } from "./store/contanst";
 import { clickOutside } from "./common/click-outside-directive";
+import { LoadingPlugin } from "vue-loading-overlay";
+import "vue-loading-overlay/dist/css/index.css";
 
 store
   .dispatch(`${NamespaceTypes.AUTH}/${AuthenticationActionTypes.INIT}`)
@@ -26,6 +28,7 @@ store
       .use(router)
       .use(i18n)
       .use(Toast, options)
+      .use(LoadingPlugin)
       .directive("clickOut", clickOutside)
       .mount("#app");
   });

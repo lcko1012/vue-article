@@ -129,7 +129,7 @@ class Http {
         // Handle Unauthorized
         const isLoginRoute = error.config?.url?.includes("/auth/login");
         if (!isLoginRoute) {
-          router.push("/");
+          router.push("/login");
         }
         break;
       }
