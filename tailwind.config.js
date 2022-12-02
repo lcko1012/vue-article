@@ -7,6 +7,9 @@ module.exports = {
       colors: {
         "black-rgba": "rgba(0, 0, 0, 0.54)",
       },
+      minHeight: {
+        body: "calc(100vh - var(--header-height))",
+      },
     },
   },
   plugins: [],

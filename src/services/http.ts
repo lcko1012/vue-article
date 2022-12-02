@@ -32,7 +32,7 @@ class Http {
 
   initHttp() {
     const http = axios.create({
-      baseURL: "http://localhost:3000",
+      baseURL: import.meta.env.VITE_API_PATH,
       headers,
       withCredentials: true,
     });
@@ -42,7 +42,9 @@ class Http {
         const token = CookieService.getAccessToken();
         config.headers = config.headers ?? {};
         if (token != null) {
-          config.headers.Authorization = `Bearer ${token}`;
+          config.headers.Authorization = `${
+            import.meta.env.VITE_AUTHORIZATION_PREFIX
+          } ${token}`;
         }
         return config;
       },

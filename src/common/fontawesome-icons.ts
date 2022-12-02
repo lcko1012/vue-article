@@ -13,6 +13,7 @@ import {
   faHeart,
   faBookmark,
   faUserPlus,
+  faNewspaper,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -27,7 +28,8 @@ library.add(
   faPen,
   faHeart,
   faBookmark,
-  faUserPlus
+  faUserPlus,
+  faNewspaper
 );
 
 export default FontAwesomeIcon;

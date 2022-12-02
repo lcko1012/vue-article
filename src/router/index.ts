@@ -20,7 +20,7 @@ const router = createRouter({
         {
           path: "articles/create",
           name: "article_create",
-          component: () => import("@/views/CreateArticleView.vue"),
+          component: () => import("@/views/user/article/CreateArticleView.vue"),
           beforeEnter: Authenticated,
         },
         {

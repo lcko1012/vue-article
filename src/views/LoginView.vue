@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import router from "@/router";
-import AuthDataService from "@/services/AuthDataService";
-import type { IErrorResponse } from "@/types/Error.type";
+import { ref, watch } from "vue";
 import type { AxiosError } from "axios";
 import { Form, Field } from "vee-validate";
-import { ref, watch } from "vue";
 import { useI18n } from "vue-i18n";
 import { useStore } from "vuex";
+
+import type { IErrorResponse } from "@/types/Error.type";
+import router from "@/router";
+import AuthDataService from "@/services/AuthDataService";
 import CookieService from "@/services/CookieService";
 import { AuthenticationActionTypes } from "@/store/authentication/actions";
 import { NamespaceTypes } from "@/store/contanst";

@@ -1,6 +1,6 @@
 import type { IArticle } from "@/types/Article.type";
 import type { IArticleReaction } from "@/types/Reaction.type";
-import type { ICreateArticle } from "@/views/CreateArticleView.vue";
+import type { ICreateArticle } from "@/views/user/article/CreateArticleView.vue";
 import { http } from "./http";
 
 class ArticleDataService {
@@ -10,7 +10,7 @@ class ArticleDataService {
   async getDetails(slug: string): Promise<IArticle> {
     return await http.get(`/articles/${slug}`);
   }
-  async create(article: ICreateArticle) {
+  async create(article: ICreateArticle): Promise<IArticle> {
     return await http.post("/articles", article);
   }
   async delete(id: number) {

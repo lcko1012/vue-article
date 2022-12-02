@@ -14,10 +14,10 @@ export default {
       create: "作成",
     },
     createArticle: {
-      new: "新しい記事",
       title: "タイトル",
+      title_here: "タイトルはこっち",
       content: "内容",
-      thumbnail: "サムネイル URL",
+      thumbnail: "サムネイルを追加する",
       public: "公開",
       submit: "送信",
       success: "成功に作成されました！",
@@ -66,9 +66,10 @@ export default {
         cancel: "カンセル",
       },
     },
-    errors: {
-      somethingWrong: "何かが間違っていました。もう一度やり直してください",
-      authorization: "アクセス拒否",
-    },
+  },
+  errors: {
+    somethingWrong: "何かが間違っていました。もう一度やり直してください",
+    authorization: "アクセス拒否",
+    cant_upload_file: "ファイル {name} をアップロードできませんでした",
   },
 };
