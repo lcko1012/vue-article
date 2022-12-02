@@ -14,9 +14,27 @@ const router = createRouter({
       children: [
         {
           path: "/",
-          name: "articles",
-          component: () => import("@/views/ArticlesView.vue"),
+          component: () =>
+            import("@/views/user/article/ArticlesWrapperView.vue"),
+          children: [
+            {
+              path: "/",
+              name: "popular_articles",
+              component: () => import("@/views/user/article/ArticlesView.vue"),
+            },
+            {
+              path: "top/:time",
+              name: "top_articles",
+              component: () => import("@/views/user/article/ArticlesView.vue"),
+            },
+            {
+              path: "latest",
+              name: "latest_articles",
+              component: () => import("@/views/user/article/ArticlesView.vue"),
+            },
+          ],
         },
+
         {
           path: "articles/create",
           name: "article_create",

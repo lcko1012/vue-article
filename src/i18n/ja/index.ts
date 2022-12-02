@@ -12,6 +12,14 @@ export default {
   views: {
     articles: {
       create: "作成",
+      top: "トップ",
+      week: "週",
+      month: "月",
+      year: "年",
+      infinity: "インフィニティー",
+
+      latest: "最新",
+      popular: "人気",
     },
     createArticle: {
       title: "タイトル",
@@ -58,6 +66,8 @@ export default {
     article: {
       articleItem: {
         read: "読む",
+        like: "{n} いいね | {n} いいね",
+        comment: "{n} コメント | {n} コメント",
       },
     },
     core: {

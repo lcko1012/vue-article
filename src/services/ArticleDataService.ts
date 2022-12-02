@@ -1,11 +1,30 @@
 import type { IArticle } from "@/types/Article.type";
+import type { IPaginationResponse } from "@/types/PaginationResponse.type";
 import type { IArticleReaction } from "@/types/Reaction.type";
 import type { ICreateArticle } from "@/views/user/article/CreateArticleView.vue";
 import { http } from "./http";
 
+export enum ArticlesPropTypes {
+  POPULAR = "popular",
+  LATEST = "latest",
+  WEEK = "week",
+  MONTH = "month",
+  YEAR = "year",
+  INFINITY = "infinity",
+}
+export interface IArticlesParams {
+  prop: ArticlesPropTypes;
+  page: number;
+  take: number;
+}
+interface IArticlesResponse {
+  data: IArticle[];
+  pagination: IPaginationResponse;
+}
+
 class ArticleDataService {
-  async getAll(): Promise<IArticle[]> {
-    return await http.get("/articles");
+  async getAll(params: IArticlesParams): Promise<IArticlesResponse> {
+    return await http.get("/articles", { params });
   }
   async getDetails(slug: string): Promise<IArticle> {
     return await http.get(`/articles/${slug}`);

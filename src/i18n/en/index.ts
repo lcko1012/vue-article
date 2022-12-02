@@ -12,6 +12,13 @@ export default {
   views: {
     articles: {
       create: "Create",
+      top: "Top",
+      week: "Week",
+      month: "Month",
+      year: "Year",
+      infinity: "Infinity",
+      latest: "Latest",
+      popular: "Popular",
     },
     createArticle: {
       title: "Title",
@@ -58,6 +65,8 @@ export default {
     article: {
       articleItem: {
         read: "Read",
+        like: "{n} like | {n} likes",
+        comment: "{n} comment | {n} comments",
       },
     },
     core: {
