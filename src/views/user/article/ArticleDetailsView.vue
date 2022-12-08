@@ -162,9 +162,7 @@ const isAuthor = computed(() => {
                 <p class="text-xs">
                   {{
                     $t("views.articleDetails.posted_on", {
-                      date: convertToLocaleDateString(
-                        articleState.article.createdAt
-                      ),
+                      date: $d(new Date(), "short"),
                     })
                   }}
                 </p>

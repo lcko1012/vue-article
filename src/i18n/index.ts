@@ -1,6 +1,7 @@
 import { createI18n } from "vue-i18n";
 import { localize } from "@vee-validate/i18n";
 import { configure } from "vee-validate";
+
 import EnMessages from "@/i18n/en/validator";
 import JaMessages from "@/i18n/ja/validator";
 import en from "./en";
@@ -16,6 +17,22 @@ export const i18n = createI18n({
   messages: {
     en,
     ja,
+  },
+  datetimeFormats: {
+    en: {
+      short: {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      },
+    },
+    ja: {
+      short: {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      },
+    },
   },
 });
 
