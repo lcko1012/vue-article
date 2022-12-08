@@ -69,6 +69,17 @@ export default {
         like: "{n} いいね | {n} いいね",
         comment: "{n} コメント | {n} コメント",
       },
+      commentsContainer: {
+        comments: "コメント",
+      },
+      commentInput: {
+        submit: "送信",
+        dismiss: "解散",
+      },
+      commentItem: {
+        like: "お気に入り",
+        reply: "返事",
+      },
     },
     core: {
       deleteConfirmModal: {
@@ -81,5 +92,6 @@ export default {
     somethingWrong: "何かが間違っていました。もう一度やり直してください",
     authorization: "アクセス拒否",
     cant_upload_file: "ファイル {name} をアップロードできませんでした",
+    authentication: "ログインする必要があります",
   },
 };

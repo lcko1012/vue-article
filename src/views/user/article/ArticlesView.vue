@@ -4,7 +4,7 @@ import { useRoute } from "vue-router";
 import { useLoading } from "vue-loading-overlay";
 
 import type { IArticle } from "@/types/Article.type";
-import type { IPaginationResponse } from "@/types/PaginationResponse.type";
+import type { IPaginationResponse } from "@/types/Pagination.type";
 import ArticleItem from "@/views/user/article/components/ArticleItem.vue";
 import ArticleDataService, {
   ArticlesPropTypes,

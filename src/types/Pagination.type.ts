@@ -5,3 +5,7 @@ export interface IPaginationResponse {
   prevPage: number | null;
   lastPage: number;
 }
+export interface IPaginationQueryOptions {
+  take: number;
+  page: number;
+}

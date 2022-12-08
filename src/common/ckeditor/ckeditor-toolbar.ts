@@ -1,4 +1,4 @@
-export default [
+export const BasicToolbar = [
   "heading",
   "|",
   "fontfamily",
@@ -22,4 +22,20 @@ export default [
   "|",
   "undo",
   "redo",
+];
+
+export const CommentToolbar = [
+  "fontfamily",
+  "fontsize",
+  "|",
+  "bold",
+  "italic",
+  "|",
+  "link",
+  "|",
+  "bulletedList",
+  "numberedList",
+  "|",
+  "uploadImage",
+  "blockQuote",
 ];

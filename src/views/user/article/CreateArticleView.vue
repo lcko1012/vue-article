@@ -6,9 +6,9 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 import ArticleDataService from "@/services/ArticleDataService";
 import UploadDataService from "@/services/UploadDataService";
-import MyUploadAdapter from "@/common/upload-adapter";
-import BasicToolbar from "@/common/basic-ckeditor-toolbar";
+import { BasicToolbar } from "@/common/ckeditor/ckeditor-toolbar";
 import toast from "@/common/toast";
+import { MyCustomUploadAdapterPlugin } from "@/common/ckeditor/MyCustomUploadAdapterPlugin";
 import router from "@/router";
 import SpinnerIcon from "@/components/core/SpinnerIcon.vue";
 
@@ -18,11 +18,7 @@ export interface ICreateArticle {
   thumbnail: string;
   isPublic?: boolean;
 }
-function MyCustomUploadAdapterPlugin(editor: any) {
-  editor.plugins.get("FileRepository").createUploadAdapter = (loader: any) => {
-    return new MyUploadAdapter(loader);
-  };
-}
+
 const { locale, t } = useI18n();
 const form = ref<typeof Form>();
 const articleState: {

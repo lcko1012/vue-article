@@ -1,16 +1,15 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { ref } from "vue";
 import { RouterView } from "vue-router";
 import { useI18n } from "vue-i18n";
 import { setLocale } from "@vee-validate/i18n";
-import { useStore } from "vuex";
 
 import { SUPPORT_LOCALES } from "@/i18n";
-import { NamespaceTypes } from "@/store/contanst";
-import { AuthenticationGetterTypes } from "@/store/authentication/getters";
+import { useAuthComputed } from "@/composables/useAuthComputed";
 
-const store = useStore();
 const { locale, t } = useI18n();
+const { currentUser, isLogged, isAdmin } = useAuthComputed();
+
 const isOpenDropdown = ref<boolean>(false);
 
 const onChangeLocale = (event: Event) => {
@@ -26,22 +25,6 @@ const userDropdownItems = [
     icon: "pen-to-square",
   },
 ];
-
-const isLogged = computed(() => {
-  return store.getters[
-    `${NamespaceTypes.AUTH}/${AuthenticationGetterTypes.GET_IS_LOGGED}`
-  ];
-});
-const user = computed(() => {
-  return store.getters[
-    `${NamespaceTypes.AUTH}/${AuthenticationGetterTypes.GET_USER}`
-  ];
-});
-const isAdmin = computed(() => {
-  return store.getters[
-    `${NamespaceTypes.AUTH}/${AuthenticationGetterTypes.GET_IS_ADMIN}`
-  ];
-});
 </script>
 
 <template>
@@ -83,7 +66,7 @@ const isAdmin = computed(() => {
               @click="isOpenDropdown = !isOpenDropdown"
             >
               <img
-                :src="user.avatarUrl"
+                :src="currentUser.avatarUrl"
                 class="rounded-full w-10 h-10 mr-2 object-cover"
               />
               <FontAwesomeIcon icon="caret-down" />
