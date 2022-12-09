@@ -9,6 +9,7 @@ export interface IArticle {
   thumbnail: string;
   likeCount?: number;
   bookmarkCount?: number;
+  commentCount?: number;
   createdAt?: string;
   author?: IUser;
   isBookmarked?: boolean;

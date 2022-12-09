@@ -14,6 +14,7 @@ import { store } from "./store";
 import CookieService from "./services/CookieService";
 import { AuthenticationActionTypes } from "./store/authentication/actions";
 import { NamespaceTypes } from "./store/contanst";
+import { observeVisibility } from "./common/observe-visibility-directive";
 import "./common/validator";
 
 import "./style.css";
@@ -37,5 +38,6 @@ store
       .use(CKEditor)
       .use(VueDOMPurifyHTML)
       .directive("clickOut", clickOutside)
+      .directive("observeVisibility", observeVisibility)
       .mount("#app");
   });
