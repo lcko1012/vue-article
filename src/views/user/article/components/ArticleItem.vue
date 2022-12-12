@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { IArticle } from "@/types/Article.type";
-import { convertToLocaleDateString } from "@/common/date-time";
 import { computed } from "vue";
 import { ArticleReactionTypes } from "@/types/Reaction.type";
 import ArticleDataService from "@/services/ArticleDataService";
@@ -39,7 +38,7 @@ const showAuthorName = computed(() => {
         <p class="text-xs">
           {{
             $t("views.articleDetails.posted_on", {
-              date: convertToLocaleDateString(props.article.createdAt),
+              date: $d(new Date(), "short"),
             })
           }}
         </p>
