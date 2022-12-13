@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, watchEffect, ref, computed } from "vue";
+import { reactive, ref, computed, onUnmounted, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { useI18n } from "vue-i18n";
 import { useStore } from "vuex";
@@ -7,18 +7,26 @@ import { useLoading } from "vue-loading-overlay";
 
 import type { IArticle } from "@/types/Article.type";
 import { ArticleReactionTypes } from "@/types/Reaction.type";
+import type { IComment } from "@/types/Comment.type";
 import router from "@/router";
 import ArticleDataService from "@/services/ArticleDataService";
-import { NamespaceTypes } from "@/store/contanst";
-import { AuthenticationGetterTypes } from "@/store/authentication/getters";
 import { convertToLocaleDateString } from "@/common/date-time";
 import toast from "@/common/toast";
 import DeleteConfirmModal from "@/components/core/DeleteConfirmModal.vue";
+import Comments from "./components/CommentsContainer.vue";
+import { NamespaceTypes } from "@/store/contanst";
+import { CommentsActionTypes } from "@/store/comments/actions";
+import { useAuthComputed } from "@/composables/useAuthComputed";
+import { useSocketComputed } from "@/composables/useSocketComputed";
+import emitActions from "@/store/socket/emit-actions";
 
 const store = useStore();
 const route = useRoute();
 const { t } = useI18n();
 const loading = useLoading();
+const { currentUser } = useAuthComputed();
+const { socket } = useSocketComputed();
+
 const articleState: { article: IArticle } = reactive({
   article: {
     id: 0,
@@ -44,14 +52,34 @@ const articleState: { article: IArticle } = reactive({
 });
 const showDeleteModal = ref(false);
 
-watchEffect(async () => {
+onMounted(async () => {
   if (route.params.slug) {
     const loader = loading.show();
     articleState.article = await ArticleDataService.getDetails(
       String(route.params.slug)
     );
+    await store.dispatch(
+      `${NamespaceTypes.COMMENTS}/${CommentsActionTypes.FETCH_COMMENTS}`,
+      articleState.article.id
+    );
+
+    await socket.value.emit(
+      emitActions.ACCESS_ARTICLE,
+      articleState.article.id
+    );
+    socket.value.on(emitActions.COMMENT_ADDED, (newComment: IComment) => {
+      store.dispatch(
+        `${NamespaceTypes.COMMENTS}/${CommentsActionTypes.ADD_COMMENT}`,
+        newComment
+      );
+    });
+
     loader.hide();
   }
+});
+
+onUnmounted(() => {
+  socket.value.emit(emitActions.LEAVE_ARTICLE);
 });
 
 const handleDelete = async () => {
@@ -83,11 +111,6 @@ const showAuthorName = computed(() => {
 });
 const showAuthorAbout = computed(() => {
   return Boolean(articleState.article.author?.about);
-});
-const currentUser = computed(() => {
-  return store.getters[
-    `${NamespaceTypes.AUTH}/${AuthenticationGetterTypes.GET_USER}`
-  ];
 });
 const isAuthor = computed(() => {
   return currentUser.value?.username === articleState.article.author?.username;
@@ -195,6 +218,10 @@ const isAuthor = computed(() => {
             class="tracking-wider ck-content"
             v-dompurify-html="articleState.article.content"
           />
+        </div>
+
+        <div class="border-t-gray-200 border-t-[1px] px-16 py-6">
+          <Comments :articleId="articleState.article.id" />
         </div>
       </div>
 

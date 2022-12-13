@@ -68,6 +68,17 @@ export default {
         like: "{n} like | {n} likes",
         comment: "{n} comment | {n} comments",
       },
+      commentsContainer: {
+        comments: "Comments",
+      },
+      commentInput: {
+        submit: "Submit",
+        dismiss: "Dismiss",
+      },
+      commentItem: {
+        like: "Like",
+        reply: "Reply",
+      },
     },
     core: {
       deleteConfirmModal: {
@@ -80,5 +91,6 @@ export default {
     somethingWrong: "Something went wrong, please try again",
     authorization: "Access denied",
     cant_upload_file: "Couldn't upload file {name}",
+    authentication: "You must be logged in",
   },
 };

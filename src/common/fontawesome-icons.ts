@@ -20,10 +20,13 @@ import {
   faComment,
   faFire,
   faRankingStar,
+  faEllipsis,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faBookmark as rfaBookmark,
   faClock as rfaClock,
+  faComment as rfaComment,
+  faHeart as rfaHeart,
 } from "@fortawesome/free-regular-svg-icons";
 
 library.add(
@@ -43,8 +46,11 @@ library.add(
   faComment,
   faFire,
   faRankingStar,
+  faEllipsis,
   rfaBookmark as IconDefinition,
-  rfaClock as IconDefinition
+  rfaClock as IconDefinition,
+  rfaComment as IconDefinition,
+  rfaHeart as IconDefinition
 );
 
 export default FontAwesomeIcon;

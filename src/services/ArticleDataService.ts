@@ -1,5 +1,8 @@
 import type { IArticle } from "@/types/Article.type";
-import type { IPaginationResponse } from "@/types/PaginationResponse.type";
+import type {
+  IPaginationQueryOptions,
+  IPaginationResponse,
+} from "@/types/Pagination.type";
 import type { IArticleReaction } from "@/types/Reaction.type";
 import type { ICreateArticle } from "@/views/user/article/CreateArticleView.vue";
 import { http } from "./http";
@@ -12,10 +15,8 @@ export enum ArticlesPropTypes {
   YEAR = "year",
   INFINITY = "infinity",
 }
-export interface IArticlesParams {
+export interface IArticlesParams extends IPaginationQueryOptions {
   prop: ArticlesPropTypes;
-  page: number;
-  take: number;
 }
 interface IArticlesResponse {
   data: IArticle[];
