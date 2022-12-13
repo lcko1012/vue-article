@@ -11,7 +11,6 @@ import router from "@/router";
 import ArticleDataService from "@/services/ArticleDataService";
 import { NamespaceTypes } from "@/store/contanst";
 import { AuthenticationGetterTypes } from "@/store/authentication/getters";
-import { convertToLocaleDateString } from "@/common/date-time";
 import toast from "@/common/toast";
 import DeleteConfirmModal from "@/components/core/DeleteConfirmModal.vue";
 
@@ -29,14 +28,14 @@ const articleState: { article: IArticle } = reactive({
     thumbnail: "",
     likeCount: 0,
     bookmarkCount: 0,
-    createdAt: "",
+    createdAt: new Date(),
     author: {
       id: 0,
       username: "",
       name: "",
       avatarUrl: "",
       about: "",
-      createdAt: "",
+      createdAt: new Date(),
     },
     isLiked: false,
     isBookmarked: false,
@@ -162,7 +161,7 @@ const isAuthor = computed(() => {
                 <p class="text-xs">
                   {{
                     $t("views.articleDetails.posted_on", {
-                      date: $d(new Date(), "short"),
+                      date: $d(articleState.article.createdAt!, "short"),
                     })
                   }}
                 </p>
@@ -223,11 +222,7 @@ const isAuthor = computed(() => {
           <div>
             <h3 class="font-bold">{{ $t("views.articleDetails.joined") }}:</h3>
             <p>
-              {{
-                convertToLocaleDateString(
-                  articleState.article.author?.createdAt
-                )
-              }}
+              {{ $d(articleState.article.author?.createdAt!, "short") }}
             </p>
           </div>
         </div>
