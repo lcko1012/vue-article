@@ -38,7 +38,7 @@ const showAuthorName = computed(() => {
         <p class="text-xs">
           {{
             $t("views.articleDetails.posted_on", {
-              date: $d(new Date(), "short"),
+              date: $d(article.createdAt!, "short"),
             })
           }}
         </p>

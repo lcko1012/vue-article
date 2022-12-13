@@ -6,7 +6,7 @@ export interface IUser {
   role?: UserRoleTypes;
   avatarUrl: string;
   about: string | null;
-  createdAt?: string;
+  createdAt?: Date;
 }
 
 export enum UserRoleTypes {

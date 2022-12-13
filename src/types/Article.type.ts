@@ -10,7 +10,7 @@ export interface IArticle {
   likeCount?: number;
   bookmarkCount?: number;
   commentCount?: number;
-  createdAt?: string;
+  createdAt?: Date;
   author?: IUser;
   isBookmarked?: boolean;
   isLiked?: boolean;
